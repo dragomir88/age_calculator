@@ -1,0 +1,28 @@
+/* AgeCalculator.css */
+
+.age-calculator {
+    position: relative;
+    background-color: var(--white); /* Set the background color to white */
+    border-radius: 16px 16px 96px 16px; /* Top left, top right, bottom right, bottom left */
+    padding: 2rem; /* Add some padding inside the component */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow for depth */
+    margin: 2rem; /* Add margin around the component */
+    max-width: 600px; /* Optional: set a max-width for larger screens */
+    width: 100%; /* Use full width up to the max-width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  }
+  
+  /* Additional responsive design */
+  @media (max-width: var(--mobile-width)) {
+    .age-calculator {
+      margin: 1rem;
+      padding: 1rem;
+      border-radius: 16px 16px 64px 16px; /* Slightly smaller radius for mobile */
+    }
+  }
+  .submit-button-container {
+  display: flex;
+  justify-content: center; /* Center the button horizontally */
+  margin-top: 1rem; /* Space between the form and the button */
+}
+  
