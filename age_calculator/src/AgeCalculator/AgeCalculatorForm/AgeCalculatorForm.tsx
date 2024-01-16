@@ -65,7 +65,6 @@ const AgeCalculatorForm = ({
     const { name, value } = e.target;
     const errors = validateInput(name, value === "" ? "" : parseInt(value));
     setErrors({...errors});
-    console.log("errors",{...errors});
     onDateChange(e);
   };
 

@@ -3,35 +3,38 @@
 .age-display {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    gap: 8px; /* Adjust as needed */
+    gap: 8px;  
     font-family: var(--font-family-poppins), sans-serif;
     color: var(--color-off-black);
+    
   }
   
   .age-display-value {
-    font-size: 3em; /* Large, bold numbers */
-    font-weight: var(--font-weight-extra-bold); /* 800 weight */
-    color: var(--color-primary-purple); /* Purple color for the numbers */
+    font-size: var(--font-size-output);  
+    font-weight: var(--font-weight-extra-bold);  
+    color: var(--primary-purple); 
+     
   }
   
   .age-display-label {
-    font-size: 1em; /* Smaller size for the labels */
-    font-weight: var(--font-weight-normal); /* 400 weight */
-    color: var(--color-smokey-grey); /* Grey color for the text */
-    margin-left: 0.5em;
+    font-size: var(--font-size-output);  
+    font-weight: var(--font-weight-normal);  
+    color: var(--off-black);  
+    font-weight: var(--font-weight-extra-bold); 
+     
   }
   
   @media (max-width: var(--mobile-width)) {
     .age-display-value {
-      font-size: 2em; /* Smaller font size for mobile */
+      font-size: 1em;  
     }
   }
   
   @media (min-width: var(--desktop-width)) {
     .age-display-value {
-      font-size: 4em; /* Larger font size for desktop */
+      font-size: 4em; 
     }
   }
   
