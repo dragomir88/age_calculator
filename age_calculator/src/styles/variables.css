@@ -1,0 +1,34 @@
+/* variables.css */
+
+:root {
+    /* Colors */
+    --primary-purple: hsl(259, 100%, 65%);
+    --light-red: hsl(0, 100%, 67%);
+    --white: hsl(0, 0%, 100%);
+    --off-white: hsl(0, 0%, 94%);
+    --light-grey: hsl(0, 0%, 86%);
+    --smokey-grey: hsl(0, 1%, 44%);
+    --off-black: hsl(0, 0%, 8%);
+  
+    /* Typography */
+    --font-family: 'Poppins', sans-serif;
+    --font-size-input: 32px;
+    --font-weight-normal: 400; /* Assuming 'i' stands for italic in 400i */
+    --font-weight-bold: 700;
+    --font-weight-extra-bold: 800; /* Assuming 'i' stands for italic in 800i */
+    
+    /* Layout widths */
+    --mobile-width: 375px;
+    --desktop-width: 1440px;
+  }
+  
+  /* Apply the font family globally */
+  body {
+    font-family: var(--font-family);
+  }
+  
+  /* Apply the font size for inputs globally if needed */
+  input {
+    font-size: var(--font-size-input);
+  }
+  
