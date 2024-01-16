@@ -1,12 +1,18 @@
-// AgeCalculatorForm.tsx
-import React from 'react';
-import './AgeCalculatorForm.css';
-import DateInput from '../DateInput/DateInput';
+import React, { useState } from "react";
+import "./AgeCalculatorForm.css";
+import DateInput from "../DateInput/DateInput";
+import date from "date-and-time";
 
 interface DateInputType {
-  day: number | '';
-  month: number | '';
-  year: number | '';
+  day: number | "";
+  month: number | "";
+  year: number | "";
+}
+
+interface ValidationError {
+  day?: string;
+  month?: string;
+  year?: string;
 }
 
 interface AgeCalculatorFormProps {
@@ -14,7 +20,53 @@ interface AgeCalculatorFormProps {
   onDateChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const AgeCalculatorForm = ({ dateInput, onDateChange }: AgeCalculatorFormProps) => {
+const AgeCalculatorForm = ({
+  dateInput,
+  onDateChange,
+}: AgeCalculatorFormProps) => {
+  const [errors, setErrors] = useState<ValidationError>({});
+
+  const isDateValid = (
+    day: number | "",
+    month: number | "",
+    year: number | ""
+  ) => {
+    if (day === "" || month === "" || year === "") return false;
+    const dateString = `${year}-${month}-${day}`;
+    return date.isValid(dateString, "YYYY-M-D");
+  };
+
+  const validateInput = (name: string, value: number | "") => {
+    let error = "";
+    if (name === "day" || name === "month" || name === "year") {
+      if (!isDateValid(dateInput.day, dateInput.month, dateInput.year)) {
+        error = "Invalid date";
+      }
+    }
+    if (
+      name === "month" &&
+      typeof value === "number" &&
+      (value < 1 || value > 12)
+    ) {
+      error = "Invalid month";
+    }
+    if (
+      name === "year" &&
+      typeof value === "number" &&
+      (value < 1900 || value > new Date().getFullYear())
+    ) {
+      error = "Invalid year";
+    }
+    return error;
+  };
+
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    const error = validateInput(name, value === "" ? "" : parseInt(value));
+    setErrors({ ...errors, [name]: error });
+    onDateChange(e);
+  };
+
   return (
     <form className="container mt-3">
       <div className="row g-2">
@@ -23,7 +75,8 @@ const AgeCalculatorForm = ({ dateInput, onDateChange }: AgeCalculatorFormProps) 
             label="Day"
             name="day"
             value={dateInput.day}
-            onChange={onDateChange}
+            onChange={handleDateChange}
+            errorMessage={errors.day}
           />
         </div>
         <div className="col">
@@ -31,7 +84,8 @@ const AgeCalculatorForm = ({ dateInput, onDateChange }: AgeCalculatorFormProps) 
             label="Month"
             name="month"
             value={dateInput.month}
-            onChange={onDateChange}
+            onChange={handleDateChange}
+            errorMessage={errors.month}
           />
         </div>
         <div className="col">
@@ -39,7 +93,8 @@ const AgeCalculatorForm = ({ dateInput, onDateChange }: AgeCalculatorFormProps) 
             label="Year"
             name="year"
             value={dateInput.year}
-            onChange={onDateChange}
+            onChange={handleDateChange}
+            errorMessage={errors.year}
           />
         </div>
       </div>
