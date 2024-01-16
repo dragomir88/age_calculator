@@ -13,21 +13,22 @@
     /* Typography */
     --font-family: 'Poppins', sans-serif;
     --font-size-input: 32px;
-    --font-weight-normal: 400; /* Assuming 'i' stands for italic in 400i */
+    --font-weight-normal: 400; 
     --font-weight-bold: 700;
-    --font-weight-extra-bold: 800; /* Assuming 'i' stands for italic in 800i */
-    
+    --font-weight-extra-bold: 800; 
+    --font-size-output: 64px;
+
     /* Layout widths */
-    --mobile-width: 375px;
+    --mobile-width: 768px;
     --desktop-width: 1440px;
   }
   
-  /* Apply the font family globally */
+  /* Font family globally */
   body {
     font-family: var(--font-family);
   }
   
-  /* Apply the font size for inputs globally if needed */
+  /* Font size for inputs globally */
   input {
     font-size: var(--font-size-input);
   }
