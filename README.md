@@ -19,3 +19,6 @@ List the technologies, languages, and frameworks used in your project.
 ### 3. Run on local env.
 `npm run dev`
  
+### Deployed on git pages
+
+https://dragomir88.github.io/age_calculator/
