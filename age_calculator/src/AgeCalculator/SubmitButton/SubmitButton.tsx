@@ -1,4 +1,3 @@
-import React from "react";
 import "./SubmitButton.css"; // Create a separate CSS file for the button styles
 
 interface SubmitButtonProps {
