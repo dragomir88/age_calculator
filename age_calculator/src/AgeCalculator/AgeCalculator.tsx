@@ -4,18 +4,9 @@ import AgeCalculatorForm from "./AgeCalculatorForm/AgeCalculatorForm";
 import AgeCalculatorDisplay from "./AgeCalculatorDisplay/AgeCalculatorDisplay";
 import "./AgeCalculator.css";
 import SubmitButton from "./SubmitButton/SubmitButton";
+import { AgeOutputType, DateInputType, getAge } from "./utils";
 
-interface DateInputType {
-  day: number | "";
-  month: number | "";
-  year: number | "";
-}
 
-interface AgeOutputType {
-  years: number;
-  months: number;
-  days: number;
-}
 
 const AgeCalculator = () => {
   const [dateInput, setDateInput] = useState<DateInputType>({
@@ -36,34 +27,8 @@ const AgeCalculator = () => {
   };
 
   const calculateAge = () => {
-    const { day, month, year } = dateInput;
-    if (!day || !month || !year) {
-      // Handle invalid or incomplete input
-      console.error("Invalid date input");
-      return;
-    }
-
-    const birthDate = new Date(year, month - 1, day);
-    const today = new Date();
-    let ageYears = today.getFullYear() - birthDate.getFullYear();
-    let ageMonths = today.getMonth() - birthDate.getMonth();
-    let ageDays = today.getDate() - birthDate.getDate();
-
-    if (ageDays < 0) {
-      // Borrow days from previous month
-      const lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
-      ageDays += lastMonth.getDate();
-      ageMonths--;
-    }
-
-    if (ageMonths < 0) {
-      // Borrow months from previous year
-      ageMonths += 12;
-      ageYears--;
-    }
-
-    setAgeOutput({ years: ageYears, months: ageMonths, days: ageDays });
-    console.log(ageOutput);
+    const ageResult = getAge(dateInput);
+    setAgeOutput(ageResult);
   };
 
   return (

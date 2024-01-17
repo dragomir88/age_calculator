@@ -2,23 +2,7 @@ import React, { useState } from "react";
 import "./AgeCalculatorForm.css";
 import DateInput from "../DateInput/DateInput";
 import { validateInput } from "./utils";
-
-interface DateInputType {
-  day: number | "";
-  month: number | "";
-  year: number | "";
-}
-
-interface ValidationError {
-  day?: string;
-  month?: string;
-  year?: string;
-}
-
-interface AgeCalculatorFormProps {
-  dateInput: DateInputType;
-  onDateChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+import { AgeCalculatorFormProps, ValidationError } from "../utils";
 
 const AgeCalculatorForm = ({
   dateInput,
