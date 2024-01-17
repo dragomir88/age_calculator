@@ -7,8 +7,12 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "clean": "rm -rf dist"
   },
+  "homepage": "https://dragomir88.github.io/age_calculator",
   "dependencies": {
     "bootstrap": "^5.3.2",
     "date-and-time": "^3.1.1",
